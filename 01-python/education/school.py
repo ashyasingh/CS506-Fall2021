@@ -1,3 +1,4 @@
 def draw_school():
-    print("school not found")
+    print("This is Boston Elementary School!")
+	#print("school not found")
     return
