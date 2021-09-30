@@ -11,7 +11,9 @@ def point_avg(points):
     
     Returns a new point which is the center of all the points.
     """
-    raise NotImplementedError()
+    x = [p[0] for p in points]
+    y = [p[1] for p in points]
+    return (sum(x)/len(points),sum(y)/len(points))
 
 
 def update_centers(dataset, assignments):
@@ -21,7 +23,13 @@ def update_centers(dataset, assignments):
     Compute the center for each of the assigned groups.
     Return `k` centers in a list
     """
-    raise NotImplementedError()
+    centers = []
+    for i in dataset:
+        dataset[i] = a
+        for j in assignments:
+            assignments[j] = b
+            centers.append(math.sqrt((a-b)**2))
+    return centers
 
 def assign_points(data_points, centers):
     """
@@ -43,20 +51,26 @@ def distance(a, b):
     """
     Returns the Euclidean distance between a and b
     """
-    raise NotImplementedError()
+    return distance(a,b)
 
 def distance_squared(a, b):
-    raise NotImplementedError()
+    return distance(a,b)**2
 
 def generate_k(dataset, k):
     """
     Given `data_set`, which is an array of arrays,
     return a random set of k points from the data_set
     """
-    raise NotImplementedError()
+    return np.random.choice(dataset,k)
 
 def cost_function(clustering):
-    raise NotImplementedError()
+    #represents the sum of the squares of the distances of each data point to its assigned vector
+    squares = 0
+    for a in clustering:
+        for b in a:
+            square = distance(a,b)**2
+            squares += square
+    return squares
 
 
 def generate_k_pp(dataset, k):
